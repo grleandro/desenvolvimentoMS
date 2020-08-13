@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VendasConsole
 {
@@ -8,6 +9,8 @@ namespace VendasConsole
         {
             int opcao;
             Cliente c = new Cliente();
+            List<Cliente> clientes = new List<Cliente>();
+
             do
             {
                 Console.Clear();
@@ -21,16 +24,48 @@ namespace VendasConsole
                 switch (opcao)
                 {
                     case 1:
+                        c = new Cliente();
                         Console.WriteLine(" ---- CADASTRAR CLIENTE ---- ");
                         Console.WriteLine("Digite o nome do cliente: ");
                         c.Nome = Console.ReadLine();
                         Console.WriteLine("Digite o CPF do cliente: ");
                         c.Cpf = Console.ReadLine();
-                        Console.WriteLine($"Nome: { c.Nome} e CPF: { c.Cpf}");
 
+                        if (clientes.Count == 0)
+                        {
+                            clientes.Add(c);
+                            Console.WriteLine("Cliente salvo com sucesso!");
+                        }
+                        else
+                        {
+                            bool encontrado = false;
+                            foreach (Cliente clientesCadastrado in clientes)
+                            {
+                                if (clientesCadastrado.Cpf == c.Cpf)
+                                {
+                                    encontrado = true;
+                                }
+
+                            }
+                            if (!encontrado)
+                            {
+                                clientes.Add(c);
+                                Console.WriteLine("Cliente salvo com sucesso!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("CPF Já cadastrado!");
+                            }
+
+                        }
+                       
                         break;
                     case 2:
                         Console.WriteLine(" ---- LISTAR CLIENTES ---- ");
+                        foreach (Cliente clienteCadastrado in clientes)
+                        {
+                            Console.WriteLine(clienteCadastrado);
+                        }
                         break;
                     case 0:
                         Console.WriteLine("Saindo...\n");
