@@ -36,7 +36,8 @@ namespace VendasConsole.Utils
                 peso--;
             }
             resto = soma % 11;
-            if (resto > 2)
+
+            if (resto < 2)
             {
                 digito1 = 0;
             }
@@ -57,7 +58,7 @@ namespace VendasConsole.Utils
                 peso--;
             }
             resto = soma % 11;
-            if (resto > 2)
+            if (resto < 2)
             {
                 digito2 = 0;
             }
@@ -76,7 +77,6 @@ namespace VendasConsole.Utils
         public static bool ValidarNome(string nome)
         {
 
- 
             return true;
         }
     }

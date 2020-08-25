@@ -13,6 +13,7 @@ namespace VendasConsole.Views
 
         static void Main(string[] args)
         {
+            Dados.Inicializar();
             int opcao;
 
             do
@@ -25,6 +26,8 @@ namespace VendasConsole.Views
                   "\n4 - Listar Vendedores" +
                   "\n5 - Cadastrar Produto" +
                   "\n6 - Listar Produtos" +
+                  "\n7 - Cadastrar Venda" +
+                  "\n8 - Listar Vendas" +
                   "\n0 - Sair");
                 Console.WriteLine("\n Digite a opção desejada:");
                 opcao = Convert.ToInt32(Console.ReadLine());
@@ -48,6 +51,12 @@ namespace VendasConsole.Views
                         break;
                     case 6:
                         ListarProduto.Renderizar();
+                        break;
+                    case 7:
+                        CadastrarVenda.Renderizar();
+                        break;
+                    case 8:
+                        ListarVendas.Renderizar();
                         break;
                 }
                 Console.WriteLine("\n Pressione uma tecla para continuar...");
