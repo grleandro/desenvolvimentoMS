@@ -28,6 +28,7 @@ namespace VendasConsole.Views
                   "\n6 - Listar Produtos" +
                   "\n7 - Cadastrar Venda" +
                   "\n8 - Listar Vendas" +
+                  "\n9 - Listar Vendas por Cliente" +
                   "\n0 - Sair");
                 Console.WriteLine("\n Digite a opção desejada:");
                 opcao = Convert.ToInt32(Console.ReadLine());
@@ -56,7 +57,13 @@ namespace VendasConsole.Views
                         CadastrarVenda.Renderizar();
                         break;
                     case 8:
-                        ListarVendas.Renderizar();
+                        ListarVendas.Renderizar(VendasDAO.Listar());
+                        break;
+                    case 9:
+                        Console.Clear();
+                        Console.WriteLine("Digite o CPF do cliente: ");
+                        string cpf = Console.ReadLine();
+                        ListarVendas.Renderizar(VendasDAO.ListarPorCliente(cpf));
                         break;
                 }
                 Console.WriteLine("\n Pressione uma tecla para continuar...");
